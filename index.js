@@ -10,4 +10,4 @@
 //   alert('it should work')
 // })
 
-alert('Test 123')
+alert('Test 123');
