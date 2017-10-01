@@ -1,0 +1,21 @@
+<head>
+  <style> body {background-color: lightgray}  </style>
+</head>
+
+<body>
+  <!-- Including the navigation partial from partial directory -->
+  <% include partials/nav.ejs %>
+
+  This is the profile page of <h1><%= person %></h1>
+
+  <p>age: <%= data.age %></p>
+  <p>job: <%= data.job %></p>
+
+  <h3>Hobbies:</h3>
+  <ul>
+       <% data.hobbies.forEach(function(item){ %>
+        <li> I like: <%=  item %>  </li>
+       <% })  %>
+  </ul>
+
+</body>
