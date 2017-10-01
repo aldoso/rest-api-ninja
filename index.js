@@ -1,11 +1,6 @@
-var express = require('express');
-var app = express();
 
-app.set('port', (process.env.PORT || 5000));
 
-document.write('tadaaaam!!!')
-console.log ('this is the console')
-
-app.listen(app.get('port'), function() {
+app.listen(process.env.PORT || 5000, function() {
+  document.write('tadaaaam!!!')
   console.log('Node app is running on port', app.get('port'));
 });
