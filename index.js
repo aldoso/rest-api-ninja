@@ -11,7 +11,12 @@ app.get("/test", function(req, res){
   res.send('it works')
 })
 
-//display a static file
+// Middleware for styles.css
+// express.static('folder'), where folder 'folder' needs to exist in the project
+// "/styles" is a virtual address
+app.use('/styles', express.static('assets'))
+
+// display a static file
 app.get("/start", function(req, res){
   res.sendFile(__dirname + '/start.html')
 })
@@ -22,6 +27,10 @@ app.get("/user/:name", function(req, res){
 })
 
 //display a dynamic template - ejs
+app.get('/', function(req, res){
+  res.render('index.ejs')
+})
+
 app.get('/profile/:name', function(req, res){
   var data = {
     age: 29,
@@ -36,8 +45,4 @@ app.get('/profile/:name', function(req, res){
 
 app.get('/contact', function(req, res){
   res.render('contact.ejs')
-})
-
-app.get('/', function(req, res){
-  res.render('index.ejs')
 })
