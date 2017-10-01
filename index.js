@@ -1,13 +1,18 @@
-const express = require('express')
+var express = require('express');
+var app = express();
 
-//set up express app
-const app = express()
+app.set('port', (process.env.PORT || 5000));
 
-//listen for requests
-//for deploying to online servers like heroky you need to have process.env.port not just a port like 4000
-app.listen(process.env.port || 4000, function(){
-  console.log('Connection established: now listening for requests')
-  alert('it should work')
-})
+app.use(express.static(__dirname + '/public'));
 
-alert('Test 123');
+// views is directory for all template files
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+
+app.get('/', function(request, response) {
+  response.render('pages/index');
+});
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
