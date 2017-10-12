@@ -1,14 +1,20 @@
 const express = require('express')
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser') // in order to work, it needs to be before routes
+const mongoose = require('mongoose')
 const routes = require('./routes/api')
 
 //set up express app
 const app = express()
 
+//connect to mongodb
+mongoose.connect('mongodb://localhost/ninjago')
+mongoose.Promise = global.Promise
+
 app.use(bodyParser.json()) //must be before routes
 
 //initialize routes
 app.use('/api', routes)
+// or same thing: app.use('/api', require('./routes/api')) but delete const routes from top
 
 //listen for requests
 app.listen(process.env.PORT || 5000, function(){

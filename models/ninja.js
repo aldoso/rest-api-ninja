@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 const NinjaSchema = new Schema({
   name: {
     type: String,
-    requires: [true, 'Name field is requires']
+    requires: [true, 'Name field is required']
   },
   rank: {
     type: String
