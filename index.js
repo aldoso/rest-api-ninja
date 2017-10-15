@@ -16,6 +16,12 @@ app.use(bodyParser.json()) //must be before routes
 app.use('/api', routes)
 // or same thing: app.use('/api', require('./routes/api')) but delete const routes from top
 
+// error handling middleware
+app.use(function(err, req, res, next){
+  // console.log(err)
+  res.status(422).send({error: err.message})
+})
+
 //listen for requests
 app.listen(process.env.PORT || 5000, function(){
   console.log('This app is live on http://localhost:5000')
