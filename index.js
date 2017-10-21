@@ -12,6 +12,8 @@ mongoose.Promise = global.Promise
 
 app.use(bodyParser.json()) //must be before routes
 
+app.use(express.static('public')) //serve static files (middleware)
+
 //initialize routes
 app.use('/api', routes)
 // or same thing: app.use('/api', require('./routes/api')) but delete const routes from top
